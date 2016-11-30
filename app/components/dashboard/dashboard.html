@@ -31,27 +31,38 @@
               </ul>
               <div class="who clearfix">
                 <!-- img src="app/assets/img/profileimg2.png" alt="img" -->
-                <h3><b>Total Income</b>:  {{totalIncome}}</h3>
+                <h3><b>Category Income</b></h3>
                 <!--span class="from"><b>1 days ago</b> via Mobile, New York</span -->
               </div>
-              <!--<div class="text">
-                    <table class="table table-stripped">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Amount</th>
-                            </tr>    
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div *ngFor="let category of incomeCategories"> {{category}}</div>
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>                  
-            </div> -->
+          
+                <table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>    
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of incomeCategories">
+                            <td>
+                                {{category.name}}
+                            </td>
+                            <td>
+                                {{category.catAmt}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Total</strong>
+                            </td>
+                            <td>
+                                <strong>{{totalIncome}}</strong>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>  
+
               <ul class="links">
                 <li><a href="#"><i class="fa fa-thumbs-o-up"></i> Like</a></li>
                 <li><a href="#"><i class="fa fa-comment-o"></i> Comment</a></li>
@@ -62,10 +73,12 @@
         <!-- End Post -->
 
   
-    <!--area-chart></area-chart -->
+   
     <div class="panel panel-default">
-        <div class="panel-heading">Total Income</div>
+        <div class="panel-heading">Charts</div>
         <div class="panel-body">
+
+             <!--area-chart></area-chart -->
             <ul>
                 <li>{{totalIncome}}</li>
             </ul>

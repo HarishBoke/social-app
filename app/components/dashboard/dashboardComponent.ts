@@ -1,19 +1,20 @@
 import { Component } from "@angular/core";
 import { IncomeService } from "./../../services/incomeService";
 
+
 @Component({
     selector:'app-dashboard',
     templateUrl:'app/components/dashboard/dashboard.html',
 })
 
 export class DashboardComponent {
-    private totalIncome:number = 0 ;
-    private incomeCategories;
+    private totalIncome:number = 0;
+    private incomeCategories:any;
     constructor(private incomeSvc : IncomeService){
         this.totalIncome = this.incomeSvc.getTotalIncome();
-        console.log("totalIncome:" + this.totalIncome);
+       // console.log("totalIncome:" + this.totalIncome);
         this.incomeCategories = this.incomeSvc.getCatData();
-       // console.log("from Component:" + JSON.stringify(this.incomeCategories));
+      // console.log("from Component:" + JSON.stringify(this.incomeCategories));
     }
         
 

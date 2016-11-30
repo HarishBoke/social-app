@@ -13,12 +13,34 @@ var IncomeService = (function () {
     function IncomeService() {
         // predefined props
         this.totalIncome = 0;
-        this.catData = [];
-        this.catDataItem = {
-            "name": "Category Name",
-            "catAmt": 0,
-            "catData": []
-        };
+        this.catSortedData = [];
+        this.catData = [
+            {
+                "name": "Ganpati",
+                "catAmt": 0,
+                "catObjData": []
+            },
+            {
+                "name": "Swami",
+                "catAmt": 0,
+                "catObjData": []
+            },
+            {
+                "name": "Mhasoba Karndak",
+                "catAmt": 0,
+                "catObjData": []
+            },
+            {
+                "name": "Other",
+                "catAmt": 0,
+                "catObjData": []
+            },
+            {
+                "name": "Rent",
+                "catAmt": 0,
+                "catObjData": []
+            }
+        ];
         // incomeData MAIN FUNCTION WHO WILL GET FIRST DATA FOR US AND THIS DATA WILL LEAD US FOR OTHER FILTER FUNCTION
         this.incomeData = [
             {
@@ -484,18 +506,19 @@ var IncomeService = (function () {
         }
         return this.totalIncome;
     };
+    // cat wise sorted data will go here
     IncomeService.prototype.getCatData = function () {
-        // cat wise sorted data will go here
-        for (var i = 0; i < this.INCOME_CATEGORIES.length; ++i) {
+        for (var i = 0; i < this.catData.length; ++i) {
             for (var j = 0; j < this.incomeData.length; ++j) {
-                this.catDataItem.catAmt += this.incomeData[j].receiptAmt;
-                if (this.INCOME_CATEGORIES[i] == this.incomeData[j].receiptMainCategory) {
-                    this.catDataItem.name = this.INCOME_CATEGORIES[i];
+                if (this.catData[i].name == this.incomeData[j].receiptMainCategory) {
+                    this.catData[i].name = this.INCOME_CATEGORIES[i];
+                    this.catData[i].catAmt += this.incomeData[j].receiptAmt;
                 }
             }
+            this.catSortedData.push(this.catData[i]);
         }
-        console.log("If data is pushed  " + this.catData);
-        return this.catData;
+        // console.log("If data is pushed  " + this.catSortedData);
+        return this.catSortedData;
     };
     IncomeService = __decorate([
         core_1.Injectable(), 

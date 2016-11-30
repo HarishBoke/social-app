@@ -18,10 +18,9 @@ var userProfileComponent_1 = require('./components/profile/userProfileComponent'
 var headerComponent_1 = require('./components/header/headerComponent');
 var sidebarComponent_1 = require('./components/sidebar/sidebarComponent');
 var dashboardComponent_1 = require('./components/dashboard/dashboardComponent');
-//import {AreaChartComponent} from './components/shared/charts/area-chart/AreaChartComponent';
 //lib or thirdParty
 //import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts';
-//import { ChartsModule } from 'ng2-charts/ng2-charts';
+var ng2_charts_1 = require('ng2-charts');
 var incomeService_1 = require("./services/incomeService");
 var user_service_1 = require("./services/user.service");
 var AppModule = (function () {
@@ -31,7 +30,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                //ChartsModule,
+                ng2_charts_1.ChartsModule,
                 router_1.RouterModule.forRoot([
                     { 'path': '', redirectTo: 'login', pathMatch: 'full' },
                     { 'path': 'login', component: loginComponent_1.Login },

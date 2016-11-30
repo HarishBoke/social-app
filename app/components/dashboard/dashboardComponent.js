@@ -15,7 +15,7 @@ var DashboardComponent = (function () {
         this.incomeSvc = incomeSvc;
         this.totalIncome = 0;
         this.totalIncome = this.incomeSvc.getTotalIncome();
-        console.log("totalIncome:" + this.totalIncome);
+        // console.log("totalIncome:" + this.totalIncome);
         this.incomeCategories = this.incomeSvc.getCatData();
         // console.log("from Component:" + JSON.stringify(this.incomeCategories));
     }

@@ -10,13 +10,13 @@ import {UserProfile} from './components/profile/userProfileComponent';
 import {HeaderComponent} from './components/header/headerComponent';
 import {SidebarComponent} from './components/sidebar/sidebarComponent';
 import {DashboardComponent} from './components/dashboard/dashboardComponent';
-//import {AreaChartComponent} from './components/shared/charts/area-chart/AreaChartComponent';
+import {AreaChartComponent} from './components/shared/charts/area-chart/AreaChartComponent';
 
 
 
 //lib or thirdParty
 //import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts';
-//import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 
 import {IncomeService} from "./services/incomeService";
 import {UserService} from "./services/user.service";
@@ -24,7 +24,7 @@ import {UserService} from "./services/user.service";
 @NgModule({
   imports:      [
     BrowserModule,
-    //ChartsModule,
+    ChartsModule,
     RouterModule.forRoot([
       {'path':'', redirectTo:'login', pathMatch:'full'},
       {'path':'login', component:Login},

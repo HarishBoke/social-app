@@ -6,12 +6,34 @@ import { Injectable } from "@angular/core";
 
      // predefined props
      private totalIncome: number = 0;
-     private catData: Array<any> = [];
-     private catDataItem =   {
-                        "name" : "Category Name",
+     private catSortedData: Array<any> = [];
+     private catData =  [
+                    {
+                        "name" : "Ganpati",
                         "catAmt":  0,
-                        "catData": []
+                        "catObjData": []
+                    },
+                    {
+                        "name" : "Swami",
+                        "catAmt":  0,
+                        "catObjData": []
+                    },
+                    {
+                        "name" : "Mhasoba Karndak",
+                        "catAmt":  0,
+                        "catObjData": []
+                    },
+                    {
+                        "name" : "Other",
+                        "catAmt":  0,
+                        "catObjData": []
+                    },
+                    {
+                        "name" : "Rent",
+                        "catAmt":  0,
+                        "catObjData": []
                     }
+                    ] 
 
      // incomeData MAIN FUNCTION WHO WILL GET FIRST DATA FOR US AND THIS DATA WILL LEAD US FOR OTHER FILTER FUNCTION
      private incomeData:Array<any> =  [
@@ -484,22 +506,23 @@ import { Injectable } from "@angular/core";
             }
         return this.totalIncome;
     }
-    public getCatData():any {
         // cat wise sorted data will go here
-         for(let i = 0;  i < this.INCOME_CATEGORIES.length; ++i){
+    public getCatData():any {
+         for(let i = 0;  i < this.catData.length; ++i){
             for(let j = 0; j < this.incomeData.length;++j){
-                    this.catDataItem.catAmt += this.incomeData[j].receiptAmt;
-                 if(this.INCOME_CATEGORIES[i] == this.incomeData[j].receiptMainCategory){
-                     this.catDataItem.name = this.INCOME_CATEGORIES[i];
+                 if(this.catData[i].name == this.incomeData[j].receiptMainCategory){
+                     this.catData[i].name = this.INCOME_CATEGORIES[i];
+                     this.catData[i].catAmt += this.incomeData[j].receiptAmt;
+                    //this.catDataItem.catData.push(this.incomeData[j]);
                  }
-                 //this.catDataItem.catData = this.incomeData[j];
-                // this.catData.push(JSON.stringify(this.catDataItem));
             }
+                    this.catSortedData.push(this.catData[i]);
+          //console.log(JSON.stringify(this.catDataItem));
         }
-           console.log("If data is pushed  " + this.catData);
-            return this.catData;
+          // console.log("If data is pushed  " + this.catSortedData);
+        return this.catSortedData;
     }
-
+    
       
         
  }
