@@ -20,21 +20,17 @@
 
  <!-- //////////////////////////////////////////////////////////////////////////// --> 
 <!-- START CONTAINER -->
-<div class="container-no-padding">
+<div class="container-no-padding clearfix">
 
+<div class="col-md-6 col-lg-4">
       <!-- Start Post -->
           <div class="panel panel-default">
+              <div class="panel-heading">Category Income</div>
             <div class="panel-body status">
               <ul class="panel-tools panel-tools-hover">
                 <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
                 <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-              </ul>
-              <div class="who clearfix">
-                <!-- img src="app/assets/img/profileimg2.png" alt="img" -->
-                <h3><b>Category Income</b></h3>
-                <!--span class="from"><b>1 days ago</b> via Mobile, New York</span -->
-              </div>
-          
+              </ul>          
                 <table class="table table-stripped">
                     <thead>
                         <tr>
@@ -62,28 +58,21 @@
                         
                     </tbody>
                 </table>  
-
-              <ul class="links">
-                <li><a href="#"><i class="fa fa-thumbs-o-up"></i> Like</a></li>
-                <li><a href="#"><i class="fa fa-comment-o"></i> Comment</a></li>
-                <li><a href="#"><i class="fa fa-share-square-o"></i> Share</a></li>
-              </ul>
             </div>
           </div>
         <!-- End Post -->
-
+</div>
   
-   
+<div class="col-md-6 col-lg-4">
     <div class="panel panel-default">
         <div class="panel-heading">Charts</div>
         <div class="panel-body">
 
-             <!--area-chart></area-chart -->
-            <ul>
-                <li>{{totalIncome}}</li>
-            </ul>
+             <area-chart></area-chart>
+           
         </div>
     </div>
+</div>
 </div>
 <!-- END CONTAINER -->
  <!-- //////////////////////////////////////////////////////////////////////////// --> 

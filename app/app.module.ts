@@ -32,7 +32,7 @@ import {UserService} from "./services/user.service";
       {'path':'dashboard',component:DashboardComponent}
     ])
  ],
-  declarations: [ AppComponent, Login, Welcome, UserProfile, HeaderComponent, SidebarComponent, DashboardComponent],
+  declarations: [ AppComponent, Login, Welcome, UserProfile, HeaderComponent, SidebarComponent, DashboardComponent, AreaChartComponent],
   bootstrap:    [ AppComponent ],
   providers: [IncomeService,UserService]
 })

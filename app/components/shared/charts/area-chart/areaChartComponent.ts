@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from 'ng2-charts';
+import { IncomeService } from "./../../../../services/incomeService";
 
 @Component({
     selector:"area-chart",
@@ -8,31 +9,36 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
         display: block;
       }
     `],
-    template:`<base-chart
-      class="chart"
-      [datasets]="datasets"
-      [labels]="labels"
-      [options]="options"
-      [chartType]="'line'">
-    </base-chart>`
+    template:`<div style="display: block">
+  <canvas baseChart
+          [data]="polarAreaChartData"
+          [labels]="polarAreaChartLabels"
+          [legend]="polarAreaLegend"
+          [chartType]="polarAreaChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>`
 })
 export class AreaChartComponent {
-private datasets = [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5, 2, 3]
-    }
-  ];
+  private incomeGetCatData: any;
+  constructor(private incomeCatSvc: IncomeService){
+    // this.incomeGetCatData  = this.incomeCatSvc.getCatData();
+    // console.log("this.incomeGetCatData" + this.incomeGetCatData);
+  }
+  // PolarArea
+  public polarAreaChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+  public polarAreaChartData:number[] = [300, 500, 100, 40, 120];
+  public polarAreaLegend:boolean = true;
 
-  private labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+  public polarAreaChartType:string = 'polarArea';
 
-  private options = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  };
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+
 }

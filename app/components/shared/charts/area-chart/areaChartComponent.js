@@ -9,34 +9,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var incomeService_1 = require("./../../../../services/incomeService");
 var AreaChartComponent = (function () {
-    function AreaChartComponent() {
-        this.datasets = [
-            {
-                label: "# of Votes",
-                data: [12, 19, 3, 5, 2, 3]
-            }
-        ];
-        this.labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-        this.options = {
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-            }
-        };
+    function AreaChartComponent(incomeCatSvc) {
+        this.incomeCatSvc = incomeCatSvc;
+        // PolarArea
+        this.polarAreaChartLabels = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+        this.polarAreaChartData = [300, 500, 100, 40, 120];
+        this.polarAreaLegend = true;
+        this.polarAreaChartType = 'polarArea';
+        // this.incomeGetCatData  = this.incomeCatSvc.getCatData();
+        // console.log("this.incomeGetCatData" + this.incomeGetCatData);
     }
+    // events
+    AreaChartComponent.prototype.chartClicked = function (e) {
+        console.log(e);
+    };
+    AreaChartComponent.prototype.chartHovered = function (e) {
+        console.log(e);
+    };
     AreaChartComponent = __decorate([
         core_1.Component({
             selector: "area-chart",
             styles: ["\n      chart {\n        display: block;\n      }\n    "],
-            template: "<base-chart\n      class=\"chart\"\n      [datasets]=\"datasets\"\n      [labels]=\"labels\"\n      [options]=\"options\"\n      [chartType]=\"'line'\">\n    </base-chart>"
+            template: "<div style=\"display: block\">\n  <canvas baseChart\n          [data]=\"polarAreaChartData\"\n          [labels]=\"polarAreaChartLabels\"\n          [legend]=\"polarAreaLegend\"\n          [chartType]=\"polarAreaChartType\"\n          (chartHover)=\"chartHovered($event)\"\n          (chartClick)=\"chartClicked($event)\"></canvas>\n</div>"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [incomeService_1.IncomeService])
     ], AreaChartComponent);
     return AreaChartComponent;
 }());
 exports.AreaChartComponent = AreaChartComponent;
-//# sourceMappingURL=areaChartComponent.js.map
+//# sourceMappingURL=AreaChartComponent.js.map

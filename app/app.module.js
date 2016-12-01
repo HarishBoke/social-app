@@ -18,6 +18,7 @@ var userProfileComponent_1 = require('./components/profile/userProfileComponent'
 var headerComponent_1 = require('./components/header/headerComponent');
 var sidebarComponent_1 = require('./components/sidebar/sidebarComponent');
 var dashboardComponent_1 = require('./components/dashboard/dashboardComponent');
+var AreaChartComponent_1 = require('./components/shared/charts/area-chart/AreaChartComponent');
 //lib or thirdParty
 //import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts';
 var ng2_charts_1 = require('ng2-charts');
@@ -38,7 +39,7 @@ var AppModule = (function () {
                     { 'path': 'dashboard', component: dashboardComponent_1.DashboardComponent }
                 ])
             ],
-            declarations: [appComponent_1.AppComponent, loginComponent_1.Login, welcomeComponent_1.Welcome, userProfileComponent_1.UserProfile, headerComponent_1.HeaderComponent, sidebarComponent_1.SidebarComponent, dashboardComponent_1.DashboardComponent],
+            declarations: [appComponent_1.AppComponent, loginComponent_1.Login, welcomeComponent_1.Welcome, userProfileComponent_1.UserProfile, headerComponent_1.HeaderComponent, sidebarComponent_1.SidebarComponent, dashboardComponent_1.DashboardComponent, AreaChartComponent_1.AreaChartComponent],
             bootstrap: [appComponent_1.AppComponent],
             providers: [incomeService_1.IncomeService, user_service_1.UserService]
         }), 

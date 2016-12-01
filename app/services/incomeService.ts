@@ -9,26 +9,31 @@ import { Injectable } from "@angular/core";
      private catSortedData: Array<any> = [];
      private catData =  [
                     {
+                        "id": 0,
                         "name" : "Ganpati",
                         "catAmt":  0,
                         "catObjData": []
                     },
                     {
+                        "id": 1,
                         "name" : "Swami",
                         "catAmt":  0,
                         "catObjData": []
                     },
                     {
+                        "id": 2,
                         "name" : "Mhasoba Karndak",
                         "catAmt":  0,
                         "catObjData": []
                     },
                     {
+                        "id": 3,
                         "name" : "Other",
                         "catAmt":  0,
                         "catObjData": []
                     },
                     {
+                        "id": 4,
                         "name" : "Rent",
                         "catAmt":  0,
                         "catObjData": []
@@ -511,7 +516,7 @@ import { Injectable } from "@angular/core";
          for(let i = 0;  i < this.catData.length; ++i){
             for(let j = 0; j < this.incomeData.length;++j){
                  if(this.catData[i].name == this.incomeData[j].receiptMainCategory){
-                     this.catData[i].name = this.INCOME_CATEGORIES[i];
+                     //this.catData[i].name = this.INCOME_CATEGORIES[i];
                      this.catData[i].catAmt += this.incomeData[j].receiptAmt;
                     //this.catDataItem.catData.push(this.incomeData[j]);
                  }

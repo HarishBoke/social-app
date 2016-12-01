@@ -1,10 +1,9 @@
 import { Component } from "@angular/core";
 import { IncomeService } from "./../../services/incomeService";
 
-
 @Component({
     selector:'app-dashboard',
-    templateUrl:'app/components/dashboard/dashboard.html',
+    templateUrl:'app/components/dashboard/dashboard.html'
 })
 
 export class DashboardComponent {

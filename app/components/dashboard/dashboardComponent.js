@@ -22,7 +22,7 @@ var DashboardComponent = (function () {
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'app-dashboard',
-            templateUrl: 'app/components/dashboard/dashboard.html',
+            templateUrl: 'app/components/dashboard/dashboard.html'
         }), 
         __metadata('design:paramtypes', [incomeService_1.IncomeService])
     ], DashboardComponent);
