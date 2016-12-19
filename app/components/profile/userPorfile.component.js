@@ -9,17 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var user_service_1 = require("../../services/user.service");
 var UserProfile = (function () {
-    function UserProfile(_userService) {
-        this._userService = _userService;
+    function UserProfile() {
     }
     UserProfile = __decorate([
         core_1.Component({
             selector: "user-profile",
             template: "</h1>user profile</h1>"
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService])
+        __metadata('design:paramtypes', [])
     ], UserProfile);
     return UserProfile;
 }());

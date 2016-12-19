@@ -49,7 +49,7 @@ var IncomeService = (function () {
         // incomeData MAIN FUNCTION WHO WILL GET FIRST DATA FOR US AND THIS DATA WILL LEAD US FOR OTHER FILTER FUNCTION
         this.incomeData = [
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -64,7 +64,7 @@ var IncomeService = (function () {
                 "id": 1
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -79,7 +79,7 @@ var IncomeService = (function () {
                 "id": 2
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -94,7 +94,7 @@ var IncomeService = (function () {
                 "id": 3
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -154,7 +154,7 @@ var IncomeService = (function () {
                 "id": 7
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -169,7 +169,7 @@ var IncomeService = (function () {
                 "id": 8
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "Mhasoba Chouk, Dattwadi ",
                 "receiptType": "cash",
@@ -259,7 +259,7 @@ var IncomeService = (function () {
                 "id": 14
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "Mhasoba Chouk, Dattwadi ",
                 "receiptType": "cash",
@@ -499,31 +499,38 @@ var IncomeService = (function () {
                 "id": 30
             }
         ];
-        // THIS IS  CONST CATEGORIES  data SHOULD NOT OVERRIDE WE CAN ADD HERE BUT SHOULD NOT MODIFY
-        this.INCOME_CATEGORIES = ["Ganpati", "Swami", "Mhasoba Karndak", "Other", "Rent"];
+        this.initGetTotalIncome = this.getTotalIncome();
+        this.initGetCatData = this.getCatData();
     }
+    // THIS IS  CONST CATEGORIES  data SHOULD NOT OVERRIDE WE CAN ADD HERE BUT SHOULD NOT MODIFY
+    // private INCOME_CATEGORIES:Array<string> = ["Ganpati","Swami","Mhasoba Karndak","Other","Rent"]; 
     IncomeService.prototype.getData = function () {
         return this.incomeData;
     };
-    IncomeService.prototype.getTotalIncome = function () {
+    IncomeService.prototype.setTotalIncome = function () {
         for (var i = 0; i < this.incomeData.length; ++i) {
             this.totalIncome += this.incomeData[i].receiptAmt;
         }
         return this.totalIncome;
     };
+    IncomeService.prototype.getTotalIncome = function () {
+        return this.setTotalIncome();
+    };
     // cat wise sorted data will go here
-    IncomeService.prototype.getCatData = function () {
+    IncomeService.prototype.setCatData = function () {
         for (var i = 0; i < this.catData.length; ++i) {
             for (var j = 0; j < this.incomeData.length; ++j) {
                 if (this.catData[i].name == this.incomeData[j].receiptMainCategory) {
-                    //this.catData[i].name = this.INCOME_CATEGORIES[i];
                     this.catData[i].catAmt += this.incomeData[j].receiptAmt;
+                    this.catData[i].catObjData.push(this.incomeData[j]);
                 }
             }
-            this.catSortedData.push(this.catData[i]);
+            this.catSortedData = this.catData;
         }
-        // console.log("If data is pushed  " + this.catSortedData);
         return this.catSortedData;
+    };
+    IncomeService.prototype.getCatData = function () {
+        return this.setCatData();
     };
     IncomeService = __decorate([
         core_1.Injectable(), 

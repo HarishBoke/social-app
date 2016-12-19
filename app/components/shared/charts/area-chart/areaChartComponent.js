@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var incomeService_1 = require("./../../../../services/incomeService");
 var AreaChartComponent = (function () {
-    function AreaChartComponent(incomeCatSvc) {
-        this.incomeCatSvc = incomeCatSvc;
+    function AreaChartComponent() {
+        //constructor(private incomeCatSvc: IncomeService){
+        // this.incomeGetCatData  = this.incomeCatSvc.getCatData();
+        // console.log("this.incomeGetCatData" + this.incomeGetCatData);
+        //}
         // PolarArea
         this.polarAreaChartLabels = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
         this.polarAreaChartData = [300, 500, 100, 40, 120];
         this.polarAreaLegend = true;
         this.polarAreaChartType = 'polarArea';
-        // this.incomeGetCatData  = this.incomeCatSvc.getCatData();
-        // console.log("this.incomeGetCatData" + this.incomeGetCatData);
     }
     // events
     AreaChartComponent.prototype.chartClicked = function (e) {
@@ -34,7 +34,7 @@ var AreaChartComponent = (function () {
             styles: ["\n      chart {\n        display: block;\n      }\n    "],
             template: "<div style=\"display: block\">\n  <canvas baseChart\n          [data]=\"polarAreaChartData\"\n          [labels]=\"polarAreaChartLabels\"\n          [legend]=\"polarAreaLegend\"\n          [chartType]=\"polarAreaChartType\"\n          (chartHover)=\"chartHovered($event)\"\n          (chartClick)=\"chartClicked($event)\"></canvas>\n</div>"
         }), 
-        __metadata('design:paramtypes', [incomeService_1.IncomeService])
+        __metadata('design:paramtypes', [])
     ], AreaChartComponent);
     return AreaChartComponent;
 }());

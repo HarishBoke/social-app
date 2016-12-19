@@ -14,10 +14,10 @@ var DashboardComponent = (function () {
     function DashboardComponent(incomeSvc) {
         this.incomeSvc = incomeSvc;
         this.totalIncome = 0;
-        this.totalIncome = this.incomeSvc.getTotalIncome();
+        this.totalIncome = this.incomeSvc.initGetTotalIncome;
         // console.log("totalIncome:" + this.totalIncome);
-        this.incomeCategories = this.incomeSvc.getCatData();
-        // console.log("from Component:" + JSON.stringify(this.incomeCategories));
+        this.incomeCategories = this.incomeSvc.initGetCatData;
+        console.log("from Component:" + JSON.stringify(this.incomeCategories));
     }
     DashboardComponent = __decorate([
         core_1.Component({

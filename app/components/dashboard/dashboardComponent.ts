@@ -10,10 +10,10 @@ export class DashboardComponent {
     private totalIncome:number = 0;
     private incomeCategories:any;
     constructor(private incomeSvc : IncomeService){
-        this.totalIncome = this.incomeSvc.getTotalIncome();
+        this.totalIncome = this.incomeSvc.initGetTotalIncome;
        // console.log("totalIncome:" + this.totalIncome);
-        this.incomeCategories = this.incomeSvc.getCatData();
-      // console.log("from Component:" + JSON.stringify(this.incomeCategories));
+        this.incomeCategories = this.incomeSvc.initGetCatData;
+      console.log("from Component:" + JSON.stringify(this.incomeCategories));
     }
         
 

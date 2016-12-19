@@ -21,10 +21,10 @@ import { IncomeService } from "./../../../../services/incomeService";
 })
 export class AreaChartComponent {
   private incomeGetCatData: any;
-  constructor(private incomeCatSvc: IncomeService){
+  //constructor(private incomeCatSvc: IncomeService){
     // this.incomeGetCatData  = this.incomeCatSvc.getCatData();
     // console.log("this.incomeGetCatData" + this.incomeGetCatData);
-  }
+  //}
   // PolarArea
   public polarAreaChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
   public polarAreaChartData:number[] = [300, 500, 100, 40, 120];

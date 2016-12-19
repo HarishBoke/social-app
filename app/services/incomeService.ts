@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
- 
+import { IincomeData } from "./../interfaces/incomeData";
+
  @Injectable()
 
- export class IncomeService {
+ export class IncomeService {   
 
      // predefined props
-     private totalIncome: number = 0;
-     private catSortedData: Array<any> = [];
+     public totalIncome: number = 0;
+     public catSortedData: Array<any> = [];
      private catData =  [
                     {
                         "id": 0,
@@ -41,9 +42,9 @@ import { Injectable } from "@angular/core";
                     ] 
 
      // incomeData MAIN FUNCTION WHO WILL GET FIRST DATA FOR US AND THIS DATA WILL LEAD US FOR OTHER FILTER FUNCTION
-     private incomeData:Array<any> =  [
+     private incomeData:IincomeData[] =  [
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -58,7 +59,7 @@ import { Injectable } from "@angular/core";
                 "id": 1
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -73,7 +74,7 @@ import { Injectable } from "@angular/core";
                 "id": 2
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -88,7 +89,7 @@ import { Injectable } from "@angular/core";
                 "id": 3
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -148,7 +149,7 @@ import { Injectable } from "@angular/core";
                 "id": 7
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "House no. 638, Dattwadi ",
                 "receiptType": "cash",
@@ -163,7 +164,7 @@ import { Injectable } from "@angular/core";
                 "id": 8
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "Mhasoba Chouk, Dattwadi ",
                 "receiptType": "cash",
@@ -253,7 +254,7 @@ import { Injectable } from "@angular/core";
                 "id": 14
             },
             {
-                "receiptPersonMobile": 9850086868,
+                "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
                 "receiptPersonAddress": "Mhasoba Chouk, Dattwadi ",
                 "receiptType": "cash",
@@ -500,34 +501,40 @@ import { Injectable } from "@angular/core";
      
      // THIS IS  CONST CATEGORIES  data SHOULD NOT OVERRIDE WE CAN ADD HERE BUT SHOULD NOT MODIFY
      
-     private INCOME_CATEGORIES:Array<string> = ["Ganpati","Swami","Mhasoba Karndak","Other","Rent"]; 
+    // private INCOME_CATEGORIES:Array<string> = ["Ganpati","Swami","Mhasoba Karndak","Other","Rent"]; 
 
     public getData() {
         return this.incomeData;
     }
-    public  getTotalIncome():number {
+    private setTotalIncome():number {
         for(let i = 0; i < this.incomeData.length; ++i){
             this.totalIncome += this.incomeData[i].receiptAmt;           
             }
         return this.totalIncome;
     }
+    public getTotalIncome():number {
+        return this.setTotalIncome();
+    }
+    public initGetTotalIncome = this.getTotalIncome();
         // cat wise sorted data will go here
-    public getCatData():any {
+    private setCatData():any {
          for(let i = 0;  i < this.catData.length; ++i){
             for(let j = 0; j < this.incomeData.length;++j){
                  if(this.catData[i].name == this.incomeData[j].receiptMainCategory){
-                     //this.catData[i].name = this.INCOME_CATEGORIES[i];
-                     this.catData[i].catAmt += this.incomeData[j].receiptAmt;
-                    //this.catDataItem.catData.push(this.incomeData[j]);
+                    this.catData[i].catAmt += this.incomeData[j].receiptAmt;
+                    this.catData[i].catObjData.push(this.incomeData[j]);
                  }
             }
-                    this.catSortedData.push(this.catData[i]);
-          //console.log(JSON.stringify(this.catDataItem));
+             this.catSortedData = this.catData;
         }
-          // console.log("If data is pushed  " + this.catSortedData);
         return this.catSortedData;
     }
-    
+    public getCatData(){
+        return this.setCatData();
+    }
+   public initGetCatData = this.getCatData();
+   // this.catSortedData = this.getCatData();
+
       
         
  }

@@ -6,7 +6,7 @@ import {UserService} from "../../services/user.service";
     template: "</h1>user profile</h1>"
 })
 export class UserProfile{
-    constructor(private _userService: UserService ){
+    //constructor(private _userService: UserService ){
 
-    }
+    //}
 }
