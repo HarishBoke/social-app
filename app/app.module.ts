@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { RouterModule }   from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './appComponent';
@@ -25,6 +26,7 @@ import {UserService} from "./services/user.service";
   imports:      [
     BrowserModule,
     ChartsModule,
+    HttpModule, 
     RouterModule.forRoot([
       {'path':'', redirectTo:'login', pathMatch:'full'},
       {'path':'login', component:Login},

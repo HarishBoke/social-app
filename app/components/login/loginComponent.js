@@ -8,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 var Login = (function () {
     function Login() {
         this.loged = false;
@@ -19,14 +20,14 @@ var Login = (function () {
             console.log('connected');
         }
     };
-    Login = __decorate([
-        core_1.Component({
-            selector: 'app-login',
-            templateUrl: 'app/components/login/login.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], Login);
     return Login;
 }());
+Login = __decorate([
+    core_1.Component({
+        selector: 'app-login',
+        templateUrl: 'app/components/login/login.html'
+    }),
+    __metadata("design:paramtypes", [])
+], Login);
 exports.Login = Login;
 //# sourceMappingURL=loginComponent.js.map

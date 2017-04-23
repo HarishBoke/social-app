@@ -1,14 +1,23 @@
 import { Injectable } from "@angular/core";
 import { IincomeData } from "./../interfaces/incomeData";
+import {Http, Response, Headers, RequestOptions } from '@angular/http';
+
+import {Observable} from 'rxjs/Rx';
+
+// Import RxJs required methods
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
 
  @Injectable()
 
  export class IncomeService {   
 
-     // predefined props
-     public totalIncome: number = 0;
-     public catSortedData: Array<any> = [];
-     private catData =  [
+    private incomeDataURI = "http://localhost:9999/income";
+    private incomeData = [];
+    private allIncomeData = [];
+    public catSortedData: Array<any> = [];
+    private catData =  [
                     {
                         "id": 0,
                         "name" : "Ganpati",
@@ -29,7 +38,7 @@ import { IincomeData } from "./../interfaces/incomeData";
                     },
                     {
                         "id": 3,
-                        "name" : "Other",
+                        "name" : "Others",
                         "catAmt":  0,
                         "catObjData": []
                     },
@@ -39,10 +48,38 @@ import { IincomeData } from "./../interfaces/incomeData";
                         "catAmt":  0,
                         "catObjData": []
                     }
-                    ] 
+     ];
+    private isIncomeData = false;
+    constructor (private http: Http){
+         //this.getCategoriesData();
+       //  this.getIncomeData();
+       // console.log(this.getData());
+         ///let sdata = JSON.stringify(data);
+        //console.log("data:" + sdata ); 
+    }
 
-     // incomeData MAIN FUNCTION WHO WILL GET FIRST DATA FOR US AND THIS DATA WILL LEAD US FOR OTHER FILTER FUNCTION
-     private incomeData:IincomeData[] =  [
+   public setIncomeData() {
+        return this.http.get(this.incomeDataURI)
+        .map((res:Response) => res.json())
+        .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
+    }
+    public getIncomeData(){
+        return this.setIncomeData().map((data) => {
+            this.incomeData = data;
+            return this.incomeData;
+        }).catch((error) => {
+            console.log('error ' + error);
+            throw error;
+        });
+    }
+    
+     // predefined props
+     //public totalIncome: number = 0;
+     
+     /*
+
+     //incomeData MAIN FUNCTION WHO WILL GET FIRST DATA FOR US AND THIS DATA WILL LEAD US FOR OTHER FILTER FUNCTION
+    /* private incomeData:IincomeData[] =  [
             {
                 "receiptPersonMobile": "9850086868",
                 "receiptPersonEmail": "bhareker.sanjay@gmail.com",
@@ -493,7 +530,7 @@ import { IincomeData } from "./../interfaces/incomeData";
                 "receiptid": 2575,
                 "id": 30
             }
-        ];
+     ];*/
      
      
      
@@ -503,36 +540,33 @@ import { IincomeData } from "./../interfaces/incomeData";
      
     // private INCOME_CATEGORIES:Array<string> = ["Ganpati","Swami","Mhasoba Karndak","Other","Rent"]; 
 
-    public getData() {
-        return this.incomeData;
-    }
-    private setTotalIncome():number {
-        for(let i = 0; i < this.incomeData.length; ++i){
-            this.totalIncome += this.incomeData[i].receiptAmt;           
-            }
-        return this.totalIncome;
-    }
-    public getTotalIncome():number {
-        return this.setTotalIncome();
-    }
-    public initGetTotalIncome = this.getTotalIncome();
+   
+    
+    
+   
+   // public initGetTotalIncome = this.getTotalIncome();
         // cat wise sorted data will go here
-    private setCatData():any {
-         for(let i = 0;  i < this.catData.length; ++i){
-            for(let j = 0; j < this.incomeData.length;++j){
-                 if(this.catData[i].name == this.incomeData[j].receiptMainCategory){
-                    this.catData[i].catAmt += this.incomeData[j].receiptAmt;
-                    this.catData[i].catObjData.push(this.incomeData[j]);
-                 }
+    public setCatData():any {
+        return this.getIncomeData().map((res)=>{
+            //this.catData.push(res);
+            console.log(res, "from setcatdata");  
+            for(let i = 0;  i < this.catData.length; ++i){
+                for(let j = 0; j < this.incomeData.length;++j){
+                    if(this.catData[i].name == this.incomeData[j].receiptMainCategory){
+                        this.catData[i].catAmt += parseInt(this.incomeData[j].receiptAmt);
+                        this.catData[i].catObjData.push(this.incomeData[j]);
+                    }
+                }
+                this.catSortedData = this.catData;
             }
-             this.catSortedData = this.catData;
-        }
-        return this.catSortedData;
+            return this.catSortedData;          
+            //console.log("from get cat data", that.catData);
+        });
     }
-    public getCatData(){
+    /*public getCatData(){
         return this.setCatData();
-    }
-   public initGetCatData = this.getCatData();
+    }*/
+   //public initGetCatData = this.getCatData();
    // this.catSortedData = this.getCatData();
 
       
