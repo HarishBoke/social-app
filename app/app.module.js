@@ -38,7 +38,8 @@ AppModule = __decorate([
                 { 'path': '', redirectTo: 'login', pathMatch: 'full' },
                 { 'path': 'login', component: loginComponent_1.Login },
                 { 'path': 'welcome', component: welcomeComponent_1.Welcome },
-                { 'path': 'dashboard', component: dashboardComponent_1.DashboardComponent }
+                { 'path': 'dashboard', component: dashboardComponent_1.DashboardComponent },
+                { 'path': 'category/:id', component: welcomeComponent_1.Welcome },
             ])
         ],
         declarations: [appComponent_1.AppComponent, loginComponent_1.Login, welcomeComponent_1.Welcome, userProfileComponent_1.UserProfile, headerComponent_1.HeaderComponent, sidebarComponent_1.SidebarComponent, dashboardComponent_1.DashboardComponent, AreaChartComponent_1.AreaChartComponent],

@@ -31,7 +31,8 @@ import {UserService} from "./services/user.service";
       {'path':'', redirectTo:'login', pathMatch:'full'},
       {'path':'login', component:Login},
       {'path':'welcome', component:Welcome},
-      {'path':'dashboard',component:DashboardComponent}
+      {'path':'dashboard',component:DashboardComponent},
+      {'path':'category/:id', component:Welcome},
     ])
  ],
   declarations: [ AppComponent, Login, Welcome, UserProfile, HeaderComponent, SidebarComponent, DashboardComponent, AreaChartComponent],
